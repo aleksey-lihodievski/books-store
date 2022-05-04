@@ -5,7 +5,10 @@ export type TCategory =
   | "men's clothing"
   | "women's clothing";
 
-export type TFilterDirection = 'asc' | 'desc';
+export const enum TFilterDirection {
+  ASC = 'asc',
+  DESC = 'desc',
+}
 
 export const categories: TCategory[] = [
   'all',

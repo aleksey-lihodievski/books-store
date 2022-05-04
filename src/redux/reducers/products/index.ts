@@ -19,7 +19,7 @@ const initialState: IState = {
   allProducts: [],
   categories: [],
   filter: 'all',
-  filterDirection: 'asc',
+  filterDirection: TFilterDirection.ASC,
   loading: false,
   error: false,
 };

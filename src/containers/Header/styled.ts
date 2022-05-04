@@ -14,7 +14,7 @@ export const HeaderTag = styled.header<IHeaderProps>`
     props.image &&
     css`
       position: relative;
-      padding: 60px 0;
+      padding: 50px 0;
 
       &:before {
         content: '';

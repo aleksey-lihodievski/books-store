@@ -1,16 +1,10 @@
-import React, { CSSProperties, useState } from 'react';
+import React, { useState } from 'react';
 // import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 
 import Container from 'components/Container';
-import {
-  Desktop,
-  Mobile,
-  MobileMenuIcon,
-  MobileNavModal,
-  NavBar,
-  NavBarLink,
-} from './styled';
-import { NavLink } from 'react-router-dom';
+import { Desktop, MobileMenuIcon, Mobile, NavBar, NavBarLink } from './styled';
+
+import useMediaQuery from 'hooks/media';
 
 interface IProps {
   hasImage?: boolean;
@@ -18,6 +12,8 @@ interface IProps {
 
 const Navigation: React.FC<IProps> = ({ hasImage }) => {
   const [scrolled, setScrolled] = useState(false || !hasImage);
+
+  const isDesktop = useMediaQuery('(min-width: 992px)');
   const [mobileNavModal, setMobileNavModal] = useState(false);
 
   const handleChangeNavbar = () => {
@@ -34,19 +30,20 @@ const Navigation: React.FC<IProps> = ({ hasImage }) => {
   return (
     <NavBar scrolled={scrolled}>
       <Container>
-        <Desktop>
-          <NavBarLink to='/products'>Products</NavBarLink>
-          <NavBarLink to='/cart'>Cart</NavBarLink>
-        </Desktop>
-        <Mobile>
-          {mobileNavModal && (
-            <MobileNavModal open={mobileNavModal} onClick={toggleMobileNav}>
+        {isDesktop ? (
+          <Desktop>
+            <NavBarLink to='/products'>Products</NavBarLink>
+            <NavBarLink to='/cart'>Cart</NavBarLink>
+          </Desktop>
+        ) : (
+          <>
+            <Mobile open={mobileNavModal} onClick={toggleMobileNav}>
               <NavBarLink to='/products'>Products</NavBarLink>
               <NavBarLink to='/cart'>Cart</NavBarLink>
-            </MobileNavModal>
-          )}
-          <MobileMenuIcon onClick={toggleMobileNav} />
-        </Mobile>
+            </Mobile>
+            <MobileMenuIcon onClick={toggleMobileNav} />
+          </>
+        )}
       </Container>
     </NavBar>
   );

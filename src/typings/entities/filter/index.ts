@@ -1,4 +1,4 @@
-import { TCategory, TFilterDirection } from 'typings/entities/categories/index';
+import { TCategory, TFilterDirection } from 'typings/entities/categories';
 
 export interface IFilter {
   category: TCategory;

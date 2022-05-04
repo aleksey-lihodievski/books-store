@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { BsHandbagFill, BsHandbag } from 'react-icons/bs';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { Theme } from 'styles/theme';
 
 export const CardComponent = styled.article`

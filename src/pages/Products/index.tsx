@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-// import Header from 'containers/Header';
+import Header from 'containers/Header';
 import ChipsArray from 'containers/ChipsArray';
 import Card from 'components/Card';
 import ProductsList from 'components/ProductsList';
 import Container from 'components/Container';
 import Body from 'components/Body';
 import ShopHeader from 'assets/headers/shop-header.jpg';
-import { useAppDispatch } from 'redux/store';
 import {
   fetchCategories,
   fetchProducts,
@@ -16,12 +15,9 @@ import {
 } from 'redux/reducers/products';
 import { selectCategories, selectProducts } from 'redux/selectors/products';
 import { addToCart } from 'redux/reducers/cart';
-import { TCategory } from 'typings/entities/categories';
+import { useAppDispatch } from 'hooks/redux';
 import { IProduct } from 'typings/entities/products';
-import { getCategories } from 'api/products';
 import { Scroller } from './style';
-
-const Header = React.lazy(() => import('containers/Header'));
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -56,12 +52,6 @@ const Products: React.FC = () => {
   }, [dispatch, filter, filterDirection]);
 
   useEffect(() => {
-    // const fetchCategories = async () => {
-    //   const data = await getCategories();
-    //   setCategories(['all', ...data]);
-    // };
-    // fetchCategories();
-
     dispatch(fetchCategories());
   }, [dispatch]);
 
@@ -79,15 +69,7 @@ const Products: React.FC = () => {
         </Scroller>
         <ProductsList>
           {products.allProducts.map((product) => (
-            <Card
-              key={product.id}
-              onClick={onAddToCart}
-              // id={product.id}
-              // title={product.title}
-              // image={product.image}
-              // price={product.price}
-              product={product}
-            />
+            <Card key={product.id} onClick={onAddToCart} product={product} />
           ))}
         </ProductsList>
       </Container>

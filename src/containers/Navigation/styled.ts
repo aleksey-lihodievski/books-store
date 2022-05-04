@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import { Theme } from 'styles/theme';
@@ -18,16 +18,6 @@ export const Desktop = styled.div`
   display: flex;
   column-gap: 1rem;
   justify-content: flex-end;
-
-  @media (max-width: 992px) {
-    display: none;
-  }
-`;
-
-export const Mobile = styled.div`
-  @media (min-width: 993px) {
-    display: none;
-  }
 `;
 
 export const NavBar = styled.nav<INavbarProps>`
@@ -67,9 +57,33 @@ export const MobileMenuIcon = styled(GiHamburgerMenu)`
   font-size: 3rem;
 `;
 
-export const MobileNavModal = styled.div<IModalProps>`
-  display: none;
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+`;
+
+export const Mobile = styled.div<IModalProps>`
+  opacity: ${(props) => (props.open ? 1 : 0)};
+  animation: ${(props) => (props.open ? fadeIn : fadeOut)} 0.1s linear;
+
+  display: flex;
   position: fixed;
+  pointer-events: none;
   top: 0;
   left: 0;
   width: 100%;
@@ -80,10 +94,10 @@ export const MobileNavModal = styled.div<IModalProps>`
   align-items: center;
   flex-direction: column;
   padding: 1rem;
-  transition: all 0.5 ease;
+
   ${(props) =>
     props.open &&
     css`
-      display: flex;
+      pointer-events: auto;
     `}
 `;

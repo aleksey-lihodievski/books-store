@@ -4,9 +4,13 @@ import { Theme } from 'styles/theme';
 
 interface IButtonProps {
   primary?: boolean;
+  dense?: boolean;
 }
 
 const Button = styled.button<IButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 0.2s all ease;
   border-radius: 3px;
   color: #000;
@@ -14,7 +18,12 @@ const Button = styled.button<IButtonProps>`
   background: transparent;
   font-size: 1.5rem;
   padding: 7px 20px;
-  margin-left: auto;
+  ${(props) =>
+    props.dense &&
+    css`
+      font-size: 1.1rem;
+      padding: 5px 7px;
+    `}
   ${(props) =>
     !props.disabled &&
     css`
