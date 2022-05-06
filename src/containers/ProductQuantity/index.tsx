@@ -3,13 +3,13 @@ import React from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { QuantityController } from './styled';
 
-interface IProps {
+interface IProductQuantityProps {
   increase: () => void;
   decrease: () => void;
   quantity: number;
 }
 
-const ProductQuantity: React.FC<IProps> = ({
+const ProductQuantity: React.FC<IProductQuantityProps> = ({
   increase,
   decrease,
   quantity,

@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-interface IHeaderProps {
+interface IHeaderTagProps {
   image?: string;
 }
 
-export const HeaderTag = styled.header<IHeaderProps>`
+export const HeaderTag = styled.header<IHeaderTagProps>`
   ${(props) =>
     !props.image &&
     css`

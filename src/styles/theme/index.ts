@@ -51,6 +51,7 @@ export const theme = {
       main: '#bdbdbd',
       light: '#eeeeee',
       dark: '#424242',
+      background: '#f5f5f5',
       contrastText: '#fff',
       colors: [
         '#fafafa',

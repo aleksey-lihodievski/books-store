@@ -1,12 +1,15 @@
 import React from 'react';
 import Image from 'components/Image';
 
-interface IProps {
+interface ITableCellWithImageProps {
   image: string;
   children: string;
 }
 
-const TableCellWithImage: React.FC<IProps> = ({ image, children }) => {
+const TableCellWithImage: React.FC<ITableCellWithImageProps> = ({
+  image,
+  children,
+}) => {
   return (
     <>
       <Image src={image} border={80} alt={children} />

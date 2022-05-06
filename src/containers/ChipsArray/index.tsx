@@ -2,7 +2,7 @@ import React from 'react';
 
 import Chip from 'components/Chip';
 
-interface IProps<T extends string> {
+interface IChipsArrayProps<T extends string> {
   value: number;
   primary?: boolean;
   options: T[];
@@ -14,7 +14,7 @@ const ChipsArray = <T extends string>({
   primary,
   options,
   onChange,
-}: IProps<T>): React.ReactElement => {
+}: IChipsArrayProps<T>): React.ReactElement => {
   return (
     <>
       {options.map((option, index) => (

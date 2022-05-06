@@ -8,7 +8,7 @@ import { TableHead } from './components/TableHead';
 import { TableRow } from './components/TableRow';
 import { Table, TableWrapper } from './styled';
 
-type Props<T> = {
+type ITableListProps<T> = {
   rows: T[];
   columns: Column<T>[];
 };
@@ -16,7 +16,7 @@ type Props<T> = {
 const TableList = <T extends IProduct>({
   rows,
   columns,
-}: Props<T>): React.ReactElement => {
+}: ITableListProps<T>): React.ReactElement => {
   return (
     <TableWrapper>
       <Table>

@@ -24,7 +24,6 @@ const Products: React.FC = () => {
 
   const products = useSelector(selectProducts);
   const { filter, filterDirection } = products;
-  // const filteredProducts = useMemo(() => getFilteredProducts(products, filter, filterDirection), [
 
   const categories = useSelector(selectCategories);
 

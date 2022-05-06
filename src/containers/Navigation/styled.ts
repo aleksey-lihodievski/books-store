@@ -41,15 +41,6 @@ export const NavBar = styled.nav<INavbarProps>`
     `}
 `;
 
-export const NavBarLink = styled(Link)`
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-
-  &.active {
-    color: ${(props) => (props.theme as Theme).palette.primary.main};
-  }
-`;
-
 export const MobileMenuIcon = styled(GiHamburgerMenu)`
   position: relative;
   z-index: 2;

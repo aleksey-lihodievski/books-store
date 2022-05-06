@@ -5,12 +5,12 @@ import Container from 'components/Container';
 import Navigation from 'containers/Navigation';
 import Title from 'components/Title';
 
-interface IProps {
+interface IHeaderProps {
   title?: string;
   image?: string;
 }
 
-const Header: React.FC<IProps> = ({ title, image }) => {
+const Header: React.FC<IHeaderProps> = ({ title, image }) => {
   return (
     <HeaderTag image={image}>
       <Navigation hasImage={Boolean(image)} />

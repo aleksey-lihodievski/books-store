@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
 import Header from 'containers/Header';
@@ -9,64 +9,32 @@ import { selectCart } from 'redux/selectors/cart';
 import { decreaseQuantity, increaseQuantity } from 'redux/reducers/cart';
 import { useAppDispatch } from 'hooks/redux';
 import Container from 'components/Container';
-import ProductQuantity from 'containers/ProductQuantity';
-import TableCellWithImage from 'components/TableCellWithImage';
-import { ICartProduct } from 'typings/entities/products';
-import { Column } from 'typings/entities/column';
 import useMediaQuery from 'hooks/media';
+import { cartColumns } from 'constants/cart';
 
 const CartPage: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
-  const columns: Column<ICartProduct>[] = [
-    {
-      id: 'title',
-      label: 'Product',
-      align: 'left',
-      flex: 3,
-      minWidth: 200,
-      renderCell: (row) => {
-        return (
-          <TableCellWithImage image={row.image}>{row.title}</TableCellWithImage>
-        );
-      },
+  const handleIncreaseQuantity = useCallback(
+    (id: number) => {
+      dispatch(increaseQuantity(id));
     },
-    {
-      id: 'price',
-      label: 'Price',
-      align: 'center',
-      flex: 1,
-      minWidth: 100,
-      renderCell: (row) => {
-        return <>{row.price}$</>;
-      },
-    },
-    {
-      id: 'quantity',
-      label: 'Quantity',
-      align: 'center',
-      flex: 1,
-      minWidth: 100,
-      renderCell: (row) => {
-        const increase = () => {
-          dispatch(increaseQuantity(row.id));
-        };
-        const decrease = () => {
-          dispatch(decreaseQuantity(row.id));
-        };
+    [dispatch],
+  );
 
-        return (
-          <ProductQuantity
-            increase={increase}
-            decrease={decrease}
-            quantity={row.quantity}
-          />
-        );
-      },
+  const handleDecreaseQuantity = useCallback(
+    (id: number) => {
+      dispatch(decreaseQuantity(id));
     },
-  ];
+    [dispatch],
+  );
+
+  const columns = cartColumns({
+    increaseQuantity: handleIncreaseQuantity,
+    decreaseQuantity: handleDecreaseQuantity,
+  });
 
   const cart = useSelector(selectCart);
 

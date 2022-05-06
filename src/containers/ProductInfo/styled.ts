@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 import Image from 'components/Image';
+import Title from 'components/Title';
+import Paragraph from 'components/Paragraph';
+import Price from 'components/Price';
 import { Theme } from 'styles/theme';
 
 export const Layout = styled.div`
@@ -25,4 +28,21 @@ export const ImageWrapper = styled.div`
   @media (max-width: 992px) {
     padding: 0.5rem 3rem;
   }
+`;
+
+export const ProductText = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ProductTitle = styled(Title)`
+  margin-bottom: 1.5rem;
+`;
+
+export const ProductPrice = styled(Price)`
+  margin-bottom: 1rem;
+`;
+
+export const ProductDescription = styled(Paragraph)`
+  margin-bottom: 2rem;
 `;

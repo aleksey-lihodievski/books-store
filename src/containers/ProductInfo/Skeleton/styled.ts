@@ -43,7 +43,7 @@ export const TextLine = styled.div<TextLineProps>`
     css`
       min-height: 2rem;
       background: ${(props) => (props.theme as Theme).palette.gray.dark};
-      margin-bottom: 30px;
+      margin-bottom: 1.5rem;
     `}
 
   ${(props) =>
@@ -56,7 +56,7 @@ export const TextLine = styled.div<TextLineProps>`
     props.secondary &&
     css`
       background: ${(props.theme as Theme).palette.secondary.main};
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
     `}
 
   ${(props) =>
@@ -68,5 +68,5 @@ export const TextLine = styled.div<TextLineProps>`
 `;
 
 export const SkeletonDescription = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 `;

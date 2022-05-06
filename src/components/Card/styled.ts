@@ -1,7 +1,5 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-import { BsHandbagFill, BsHandbag } from 'react-icons/bs';
-import { Theme } from 'styles/theme';
 
 export const CardComponent = styled.article`
   position: relative;
@@ -19,6 +17,10 @@ export const CardComponent = styled.article`
   }
 `;
 
+export const CardLink = styled(Link)`
+  text-decoration: none;
+`;
+
 export const CardBottom = styled.div`
   font-weight: bold;
   margin-bottom: 10px;
@@ -33,35 +35,4 @@ export const CardHeader = styled.h3`
   max-width: 100%;
   color: #333;
   word-wrap: break-word;
-`;
-
-export const BagOutlinedIcon = styled(BsHandbag)`
-  position: relative;
-  font-size: 2.5rem;
-  color: ${(props) => (props.theme as Theme).palette.secondary.main};
-`;
-
-export const BagFilledIcon = styled(BsHandbagFill)`
-  display: none;
-  position: relative;
-  font-size: 2.5rem;
-  color: ${(props) => (props.theme as Theme).palette.secondary.main};
-
-  &:active {
-    color: ${(props) => (props.theme as Theme).palette.secondary.light};
-  }
-`;
-
-export const CardAction = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-
-  &:hover ${BagFilledIcon} {
-    display: block;
-  }
-
-  &:hover ${BagOutlinedIcon} {
-    display: none;
-  }
 `;
