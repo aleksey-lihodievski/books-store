@@ -105,3 +105,9 @@ export const Mobile = styled.div<IModalProps>`
 export const DesktopLinks = styled(Links)`
   margin-left: auto;
 `;
+
+export const MobileLinks = styled(Links)`
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+`;

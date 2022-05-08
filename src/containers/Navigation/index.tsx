@@ -7,9 +7,9 @@ import {
   NavBar,
   MobileNavigation,
   DesktopLinks,
+  MobileLinks,
 } from './styled';
 import { useMediaQuery } from 'hooks/media';
-import Links from './components/Links';
 import Container from 'components/Container';
 import Title from 'components/Title';
 
@@ -50,7 +50,7 @@ const Navigation: React.FC<NavigationProps> = ({ title, hasImage }) => {
         ) : (
           <>
             <Mobile open={mobileNavModal} onClick={toggleMobileNav}>
-              <Links />
+              <MobileLinks />
             </Mobile>
             <MobileNavigation>
               {title && !hasImage && <Title white>{title}</Title>}

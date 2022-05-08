@@ -13,5 +13,6 @@ export const NavBarLink = styled(Link)`
 `;
 
 export const LinksContainer = styled.div`
+  display: flex;
   box-sizing: border-box;
 `;
