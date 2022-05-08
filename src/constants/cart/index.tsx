@@ -57,4 +57,14 @@ export const cartColumns = ({
       );
     },
   },
+  {
+    id: 'total',
+    label: 'Position total',
+    align: 'center',
+    flex: 1,
+    minWidth: 150,
+    renderCell: (row) => {
+      return <>{row.quantity * row.price}$</>;
+    },
+  },
 ];

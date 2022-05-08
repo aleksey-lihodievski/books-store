@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Container from 'components/Container';
-import Button from 'components/Button';
 import Skeleton from './Skeleton';
 import { useAppDispatch } from 'hooks/redux';
 import { IProduct } from 'typings/entities/products';
@@ -15,6 +14,7 @@ import {
   ProductTitle,
 } from './styled';
 import { addToCart } from 'redux/reducers/cart';
+import Button from 'components/Button';
 
 interface IProductInfoProps {
   product: IProduct | null;

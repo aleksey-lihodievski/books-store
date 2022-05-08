@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 import Image from 'components/Image';
-import Title from 'components/Title';
+import Title from 'components/PageTitle';
 import Paragraph from 'components/Paragraph';
 import Price from 'components/Price';
 import { Theme } from 'styles/theme';
 
 export const Layout = styled.div`
   display: grid;
-  padding-top: 2rem;
   column-gap: 4rem;
   grid-template-columns: 1fr 2fr;
 

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-// import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 
 import Container from 'components/Container';
 import { Desktop, MobileMenuIcon, Mobile, NavBar } from './styled';
 
-import useMediaQuery from 'hooks/media';
-import Links from './common-components/Links';
+import { useMediaQuery } from 'hooks/media';
+import Links from './components/Links';
 
 interface NavigationProps {
   hasImage?: boolean;

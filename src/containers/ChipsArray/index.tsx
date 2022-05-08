@@ -1,12 +1,15 @@
 import React from 'react';
 
 import Chip from 'components/Chip';
+import Scroller from 'components/Scroller';
+import { ChipsArea } from './styled';
 
 interface IChipsArrayProps<T extends string> {
   value: number;
   primary?: boolean;
   options: T[];
   onChange: (value: number) => void;
+  className?: string;
 }
 
 const ChipsArray = <T extends string>({
@@ -14,20 +17,23 @@ const ChipsArray = <T extends string>({
   primary,
   options,
   onChange,
+  className,
 }: IChipsArrayProps<T>): React.ReactElement => {
   return (
-    <>
-      {options.map((option, index) => (
-        <Chip
-          checked={index === value}
-          key={index}
-          primary={primary}
-          onClick={() => onChange(index)}
-        >
-          {option}
-        </Chip>
-      ))}
-    </>
+    <Scroller className={className}>
+      <ChipsArea>
+        {options.map((option, index) => (
+          <Chip
+            checked={index === value}
+            key={index}
+            primary={primary}
+            onClick={() => onChange(index)}
+          >
+            {option}
+          </Chip>
+        ))}
+      </ChipsArea>
+    </Scroller>
   );
 };
 

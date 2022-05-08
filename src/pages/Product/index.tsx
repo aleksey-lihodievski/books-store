@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import Body from 'components/Body';
 import Header from 'containers/Header';
 import ProductInfo from 'containers/ProductInfo';
 import { IProduct } from 'typings/entities/products';
 import { getProduct } from 'api/products';
-import Body from 'components/Body';
 
 const Product: React.FC = () => {
   const { productId } = useParams();
@@ -22,10 +22,12 @@ const Product: React.FC = () => {
   }, [productId]);
 
   return (
-    <Body>
+    <>
       <Header />
-      <ProductInfo product={product} />
-    </Body>
+      <Body>
+        <ProductInfo product={product} />
+      </Body>
+    </>
   );
 };
 

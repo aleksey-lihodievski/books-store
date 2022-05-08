@@ -3,7 +3,7 @@ import React from 'react';
 import { HeaderTag } from './styled';
 import Container from 'components/Container';
 import Navigation from 'containers/Navigation';
-import Title from 'components/Title';
+import PageTitle from 'components/PageTitle';
 
 interface IHeaderProps {
   title?: string;
@@ -15,10 +15,10 @@ const Header: React.FC<IHeaderProps> = ({ title, image }) => {
     <HeaderTag image={image}>
       <Navigation hasImage={Boolean(image)} />
       <Container>
-        {title && <Title simple={!Boolean(image)}>{title}</Title>}
+        {title && <PageTitle simple={!Boolean(image)}>{title}</PageTitle>}
       </Container>
     </HeaderTag>
   );
 };
 
-export default Header;
+export default React.memo(Header);

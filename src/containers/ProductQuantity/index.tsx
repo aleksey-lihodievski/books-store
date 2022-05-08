@@ -1,6 +1,7 @@
-import Button from 'components/Button';
 import React from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+
+import Button from 'components/Button';
 import { QuantityController } from './styled';
 
 interface IProductQuantityProps {
@@ -27,4 +28,4 @@ const ProductQuantity: React.FC<IProductQuantityProps> = ({
   );
 };
 
-export default ProductQuantity;
+export default React.memo(ProductQuantity);

@@ -17,7 +17,6 @@ export const ChipBody = styled.div<IChipProps>`
   border: 2px solid;
   color: ${(props) => (props.theme as Theme).palette.gray.dark};
   font-size: 1.5rem;
-  margin-right: 0.5rem;
   cursor: pointer;
   transition: 0.2s all ease;
 
