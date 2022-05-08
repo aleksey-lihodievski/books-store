@@ -11,3 +11,7 @@ export const NavBarLink = styled(Link)`
     color: ${(props) => (props.theme as Theme).palette.primary.main};
   }
 `;
+
+export const LinksContainer = styled.div`
+  box-sizing: border-box;
+`;

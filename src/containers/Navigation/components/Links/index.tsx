@@ -1,17 +1,21 @@
 import React from 'react';
 
-import { NavBarLink } from './styled';
+import { LinksContainer, NavBarLink } from './styled';
 
-const Links: React.FC = () => {
+interface ILinksProps {
+  className?: string;
+}
+
+const Links: React.FC<ILinksProps> = ({ className }) => {
   return (
-    <>
+    <LinksContainer className={className}>
       <NavBarLink to='/products' end>
         Products
       </NavBarLink>
       <NavBarLink to='/cart' end>
         Cart
       </NavBarLink>
-    </>
+    </LinksContainer>
   );
 };
 

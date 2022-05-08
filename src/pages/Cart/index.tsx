@@ -9,10 +9,10 @@ import { selectCart } from 'redux/selectors/cart';
 import { decreaseQuantity, increaseQuantity } from 'redux/reducers/cart';
 import { useAppDispatch } from 'hooks/redux';
 import Container from 'components/Container';
-import { useMediaQuery } from 'hooks/media';
 import { cartColumns } from 'constants/cart';
 import Footer from './components/Footer';
 import Modal from 'containers/Modal';
+// import { useMediaQuery } from 'hooks/media';
 
 const CartPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ const CartPage: React.FC = () => {
   );
   const ableToCheckout = useMemo(() => cart.usersCart.length, [cart]);
 
-  const isDesktop = useMediaQuery('(min-width: 768px)');
+  // const isDesktop = useMediaQuery('(min-width: 768px)');
 
   const handleIncreaseQuantity = useCallback(
     (id: number) => {

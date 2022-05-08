@@ -23,7 +23,12 @@ const TableFooter: React.FC<ITableFooterProps> = ({
       </Paragraph>
       <FooterActions>
         <Button href='/products'>Back shoping</Button>
-        <Button disabled={!ableToCheckout} primary onClick={onOrder}>
+        <Button
+          href='/checkout'
+          disabled={!ableToCheckout}
+          primary
+          onClick={onOrder}
+        >
           Order
         </Button>
       </FooterActions>

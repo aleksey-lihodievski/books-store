@@ -13,9 +13,11 @@ interface IHeaderProps {
 const Header: React.FC<IHeaderProps> = ({ title, image }) => {
   return (
     <HeaderTag image={image}>
-      <Navigation hasImage={Boolean(image)} />
+      <Navigation title={title} hasImage={Boolean(image)} />
       <Container>
-        {title && <PageTitle simple={!Boolean(image)}>{title}</PageTitle>}
+        {title && image && (
+          <PageTitle simple={!Boolean(image)}>{title}</PageTitle>
+        )}
       </Container>
     </HeaderTag>
   );

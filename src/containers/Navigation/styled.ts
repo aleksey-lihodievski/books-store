@@ -1,8 +1,9 @@
 import styled, { css, keyframes } from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
+import Title from 'components/Title';
 import { Theme } from 'styles/theme';
-import { Link } from 'components/Link';
+import Links from './components/Links';
 
 interface INavbarProps {
   scrolled?: boolean;
@@ -12,18 +13,26 @@ interface IModalProps {
   open: boolean;
 }
 
-export const Desktop = styled.div`
+export const DesktopNavigation = styled.div`
   color: inherit;
   font-size: 1.5rem;
   display: flex;
-  column-gap: 1rem;
-  justify-content: flex-end;
+  flex: 1;
+  align-items: center;
+`;
+
+export const MobileNavigation = styled.div`
+  color: inherit;
+  font-size: 1.5rem;
+  display: flex;
+  flex: 1;
+  align-items: center;
 `;
 
 export const NavBar = styled.nav<INavbarProps>`
   display: flex;
-  justify-content: flex-end;
-  padding: 0.5rem 0;
+  flex: 1;
+  padding: 1rem 0;
   color: #fff;
   background: unset;
   position: fixed;
@@ -36,7 +45,6 @@ export const NavBar = styled.nav<INavbarProps>`
     props.scrolled &&
     css`
       color: ${(props.theme as Theme).palette.common.black};
-      /* background: ${(props) => props.theme.palette.primary.main}; */
       background: ${(props) => (props.theme as Theme).palette.gray.dark};
     `}
 `;
@@ -46,6 +54,7 @@ export const MobileMenuIcon = styled(GiHamburgerMenu)`
   z-index: 2;
   color: ${(props) => (props.theme as Theme).palette.common.white};
   font-size: 3rem;
+  margin-left: auto;
 `;
 
 const fadeIn = keyframes`
@@ -91,4 +100,8 @@ export const Mobile = styled.div<IModalProps>`
     css`
       pointer-events: auto;
     `}
+`;
+
+export const DesktopLinks = styled(Links)`
+  margin-left: auto;
 `;
