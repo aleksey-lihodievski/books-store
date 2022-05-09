@@ -18,4 +18,4 @@ const TableCellWithImage: React.FC<ITableCellWithImageProps> = ({
   );
 };
 
-export default React.memo(TableCellWithImage);
+export default TableCellWithImage;

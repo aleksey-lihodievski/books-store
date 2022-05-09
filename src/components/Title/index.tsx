@@ -1,8 +1,9 @@
 import React from 'react';
+import { TTitleLevels } from 'typings/title';
 import { TitleComponent } from './styled';
 
 interface ITitleProps {
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  level?: TTitleLevels;
   white?: boolean;
   children: React.ReactNode;
 }
@@ -15,4 +16,4 @@ const Title: React.FC<ITitleProps> = ({ level, white, children }) => {
   );
 };
 
-export default React.memo(Title);
+export default Title;

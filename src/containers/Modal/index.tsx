@@ -5,6 +5,7 @@ import ModalFooter from './components/ModalFooter';
 
 import ModalHeader from './components/ModalHeader';
 import ModalContent from './components/ModalContent';
+import { modalsRoot } from 'constants/modals';
 import { ModalBody, ModalOverlay } from './styled';
 
 interface IModalProps {
@@ -14,11 +15,11 @@ interface IModalProps {
   title?: string;
   footer?: React.ReactNode;
   transitionTime?: number;
-  onOk: () => void;
+  onSubmit: () => void;
   onCancel: () => void;
-  okText?: string;
+  submitText?: string;
   cancelText?: string;
-  okDisabled?: boolean;
+  submitDisabled?: boolean;
   cancelDisabled?: boolean;
 }
 
@@ -28,11 +29,11 @@ const Modal: React.FC<IModalProps> = ({
   title,
   transitionTime,
   footer,
-  onOk,
+  onSubmit,
   onCancel,
-  okText,
+  submitText,
   cancelText,
-  okDisabled,
+  submitDisabled,
   cancelDisabled,
   children,
 }) => {
@@ -64,17 +65,17 @@ const Modal: React.FC<IModalProps> = ({
           <ModalContent>{children}</ModalContent>
           {footer || (
             <ModalFooter
-              onOk={onOk}
+              onSubmit={onSubmit}
               onCancel={onCancel}
-              okText={okText}
+              submitText={submitText}
               cancelText={cancelText}
-              okDisabled={okDisabled}
+              submitDisabled={submitDisabled}
               cancelDisabled={cancelDisabled}
             />
           )}
         </ModalBody>
       </ModalOverlay>,
-      document.querySelector('#modals') as HTMLElement,
+      modalsRoot as HTMLElement,
     );
 
   return null;
@@ -84,9 +85,9 @@ Modal.defaultProps = {
   visible: false,
   title: '',
   transitionTime: 300,
-  okText: 'OK',
+  submitText: 'OK',
   cancelText: 'Cancel',
-  okDisabled: false,
+  submitDisabled: false,
   cancelDisabled: false,
 };
 

@@ -12,6 +12,8 @@ import {
 import { useMediaQuery } from 'hooks/media';
 import Container from 'components/Container';
 import Title from 'components/Title';
+import { desktopMedia } from 'constants/media';
+import { links } from 'constants/links';
 
 interface NavigationProps {
   title?: string;
@@ -21,7 +23,7 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ title, hasImage }) => {
   const [scrolled, setScrolled] = useState(false || !hasImage);
 
-  const isDesktop = useMediaQuery('(min-width: 992px)');
+  const isDesktop = useMediaQuery(desktopMedia);
   const [mobileNavModal, setMobileNavModal] = useState(false);
 
   const toggleMobileNav = () => {
@@ -45,12 +47,12 @@ const Navigation: React.FC<NavigationProps> = ({ title, hasImage }) => {
         {isDesktop ? (
           <DesktopNavigation>
             {title && !hasImage && <Title white>{title}</Title>}
-            <DesktopLinks />
+            <DesktopLinks links={links} />
           </DesktopNavigation>
         ) : (
           <>
             <Mobile open={mobileNavModal} onClick={toggleMobileNav}>
-              <MobileLinks />
+              <MobileLinks links={links} />
             </Mobile>
             <MobileNavigation>
               {title && !hasImage && <Title white>{title}</Title>}

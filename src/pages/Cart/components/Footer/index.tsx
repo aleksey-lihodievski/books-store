@@ -8,7 +8,7 @@ import { FooterActions, FooterComponent } from './styled';
 interface ITableFooterProps {
   totalCost: number;
   ableToCheckout: boolean;
-  onOrder: () => void;
+  onOrder?: () => void;
 }
 
 const TableFooter: React.FC<ITableFooterProps> = ({
@@ -23,19 +23,12 @@ const TableFooter: React.FC<ITableFooterProps> = ({
       </Paragraph>
       <FooterActions>
         <Button href='/products'>Back shoping</Button>
-        <Button
-          href='/checkout'
-          disabled={!ableToCheckout}
-          primary
-          onClick={onOrder}
-        >
+        <Button href='/checkout' disabled={!ableToCheckout} primary>
           Order
         </Button>
       </FooterActions>
     </FooterComponent>
   );
 };
-
-// disabled={!ableToCheckout}
 
 export default TableFooter;

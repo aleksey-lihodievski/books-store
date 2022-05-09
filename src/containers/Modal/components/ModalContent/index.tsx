@@ -9,4 +9,4 @@ const ModalContent: React.FC<IModalContentProps> = ({ children }) => {
   return <ModalContentComponent>{children}</ModalContentComponent>;
 };
 
-export default React.memo(ModalContent);
+export default ModalContent;

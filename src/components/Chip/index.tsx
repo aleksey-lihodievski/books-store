@@ -22,4 +22,4 @@ const Chip: React.FC<IChipProps> = ({
   );
 };
 
-export default React.memo(Chip);
+export default Chip;

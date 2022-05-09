@@ -1,6 +1,6 @@
 import TableCellWithImage from 'components/TableCellWithImage';
 import ProductQuantity from 'containers/ProductQuantity';
-import { Column } from 'typings/entities/column';
+import { Column } from 'typings/column';
 import { ICartProduct } from 'typings/entities/products';
 
 interface CartColumnsProps {

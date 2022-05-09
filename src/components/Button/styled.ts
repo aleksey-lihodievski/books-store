@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Theme } from 'styles/theme';
 
-interface IButtoComponentnProps {
+interface IButtonComponentProps {
   primary?: boolean;
   dense?: boolean;
   disabled?: boolean;
@@ -14,7 +14,7 @@ interface ILinkProps {
   disabled?: boolean;
 }
 
-export const ButtonComponent = styled.button<IButtoComponentnProps>`
+export const ButtonComponent = styled.button<IButtonComponentProps>`
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import Header from 'containers/Header';
@@ -11,13 +11,9 @@ import { useAppDispatch } from 'hooks/redux';
 import Container from 'components/Container';
 import { cartColumns } from 'constants/cart';
 import Footer from './components/Footer';
-import Modal from 'containers/Modal';
-// import { useMediaQuery } from 'hooks/media';
 
 const CartPage: React.FC = () => {
   const dispatch = useAppDispatch();
-
-  const [orderModalOpen, setOrderModalOpen] = useState(false);
 
   const cart = useSelector(selectCart);
   const totalCost = useMemo(
@@ -25,9 +21,7 @@ const CartPage: React.FC = () => {
       cart.usersCart.reduce((acc, item) => acc + item.price * item.quantity, 0),
     [cart],
   );
-  const ableToCheckout = useMemo(() => cart.usersCart.length, [cart]);
-
-  // const isDesktop = useMediaQuery('(min-width: 768px)');
+  const ableToCheckout = useMemo(() => Boolean(cart.usersCart.length), [cart]);
 
   const handleIncreaseQuantity = useCallback(
     (id: number) => {
@@ -43,14 +37,6 @@ const CartPage: React.FC = () => {
     [dispatch],
   );
 
-  const onOpenOrderModal = useCallback(() => {
-    setOrderModalOpen(true);
-  }, [setOrderModalOpen]);
-
-  const onCloseOrderModal = useCallback(() => {
-    setOrderModalOpen(false);
-  }, [setOrderModalOpen]);
-
   const columns = cartColumns({
     increaseQuantity: handleIncreaseQuantity,
     decreaseQuantity: handleDecreaseQuantity,
@@ -65,22 +51,10 @@ const CartPage: React.FC = () => {
             columns={columns}
             rows={cart.usersCart}
             footer={
-              <Footer
-                totalCost={totalCost}
-                ableToCheckout={!!ableToCheckout}
-                onOrder={onOpenOrderModal}
-              />
+              <Footer totalCost={totalCost} ableToCheckout={ableToCheckout} />
             }
           />
         </Container>
-        <Modal
-          title='Order'
-          visible={orderModalOpen}
-          onOk={onCloseOrderModal}
-          onCancel={onCloseOrderModal}
-        >
-          Hello
-        </Modal>
       </Body>
     </>
   );

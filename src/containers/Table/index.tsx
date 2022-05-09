@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Column } from 'typings/entities/column';
+import { Column } from 'typings/column';
 import { IProduct } from 'typings/entities/products';
 import { TableBody } from './components/TableBody';
 import { TableCell } from './components/TableCell';

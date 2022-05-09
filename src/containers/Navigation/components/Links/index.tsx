@@ -1,20 +1,21 @@
 import React from 'react';
 
+import { TLink } from 'typings/link';
 import { LinksContainer, NavBarLink } from './styled';
 
 interface ILinksProps {
+  links: TLink[];
   className?: string;
 }
 
-const Links: React.FC<ILinksProps> = ({ className }) => {
+const Links: React.FC<ILinksProps> = ({ links, className }) => {
   return (
     <LinksContainer className={className}>
-      <NavBarLink to='/products' end>
-        Products
-      </NavBarLink>
-      <NavBarLink to='/cart' end>
-        Cart
-      </NavBarLink>
+      {links.map((link) => (
+        <NavBarLink key={link.href} to={link.href} end>
+          {link.title}
+        </NavBarLink>
+      ))}
     </LinksContainer>
   );
 };

@@ -1,7 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-import Title from 'components/Title';
 import { Theme } from 'styles/theme';
 import Links from './components/Links';
 

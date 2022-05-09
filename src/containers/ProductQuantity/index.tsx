@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 import Button from 'components/Button';
-import { QuantityController } from './styled';
+import { Quantity, QuantityController } from './styled';
 
 interface IProductQuantityProps {
   increase: () => void;
@@ -20,7 +20,7 @@ const ProductQuantity: React.FC<IProductQuantityProps> = ({
       <Button dense onClick={decrease}>
         <AiOutlineMinus />
       </Button>
-      <span>{quantity}</span>
+      <Quantity>{quantity}</Quantity>
       <Button dense onClick={increase}>
         <AiOutlinePlus />
       </Button>
@@ -28,4 +28,4 @@ const ProductQuantity: React.FC<IProductQuantityProps> = ({
   );
 };
 
-export default React.memo(ProductQuantity);
+export default ProductQuantity;

@@ -5,3 +5,5 @@ export const QuantityController = styled.div`
   align-items: center;
   column-gap: 0.5rem;
 `;
+
+export const Quantity = styled.span``;

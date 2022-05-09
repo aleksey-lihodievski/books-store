@@ -4,21 +4,21 @@ import Button from 'components/Button';
 import { ModalFooterComponent } from './styled';
 
 interface IModalHeaderProps {
-  onOk: () => void;
+  onSubmit: () => void;
   onCancel: () => void;
-  okText?: string;
+  submitText?: string;
   cancelText?: string;
-  okDisabled?: boolean;
+  submitDisabled?: boolean;
   cancelDisabled?: boolean;
   children?: React.ReactNode;
 }
 
 const ModalFooter: React.FC<IModalHeaderProps> = ({
-  onOk,
+  onSubmit,
   onCancel,
-  okText,
+  submitText,
   cancelText,
-  okDisabled,
+  submitDisabled,
   cancelDisabled,
   children,
 }) => {
@@ -29,8 +29,8 @@ const ModalFooter: React.FC<IModalHeaderProps> = ({
           <Button disabled={cancelDisabled} onClick={onCancel} dense>
             {cancelText}
           </Button>
-          <Button primary disabled={okDisabled} onClick={onOk} dense>
-            {okText}
+          <Button primary disabled={submitDisabled} onClick={onSubmit} dense>
+            {submitText}
           </Button>
         </>
       )}
