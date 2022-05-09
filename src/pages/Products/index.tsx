@@ -16,7 +16,7 @@ import { selectCategories, selectProducts } from 'redux/selectors/products';
 import { addToCart } from 'redux/reducers/cart';
 import { useAppDispatch } from 'hooks/redux';
 import { IProduct } from 'typings/entities/products';
-import { Categories } from './styled';
+import { Categories } from './components/Categories';
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();

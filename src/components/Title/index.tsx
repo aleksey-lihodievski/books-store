@@ -1,6 +1,7 @@
 import React from 'react';
+
 import { TTitleLevels } from 'typings/title';
-import { TitleComponent } from './styled';
+import { TitleComponent } from './components/TitleComponent';
 
 interface ITitleProps {
   level?: TTitleLevels;

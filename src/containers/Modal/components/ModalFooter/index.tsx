@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from 'components/Button';
-import { ModalFooterComponent } from './styled';
+import { ModalFooterComponent } from './ModalFooterComponent';
 
 interface IModalHeaderProps {
   onSubmit: () => void;

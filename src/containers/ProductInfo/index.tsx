@@ -1,20 +1,18 @@
 import React from 'react';
 
 import Container from 'components/Container';
-import Skeleton from './Skeleton';
+import Skeleton from './components/Skeleton';
 import { useAppDispatch } from 'hooks/redux';
 import { IProduct } from 'typings/entities/products';
-import {
-  ImageWrapper,
-  Layout,
-  ProductDescription,
-  ProductImage,
-  ProductPrice,
-  ProductText,
-  ProductTitle,
-} from './styled';
 import { addToCart } from 'redux/reducers/cart';
 import Button from 'components/Button';
+import { ImageWrapper } from './components/ImageWrapper';
+import { Layout } from './components/Layout';
+import { ProductDescription } from './components/ProductDescription';
+import { ProductImage } from './components/ProductImage';
+import { ProductPrice } from './components/ProductPrice';
+import { ProductText } from './components/ProductText';
+import { ProductTitle } from './components/ProductTitle';
 
 interface IProductInfoProps {
   product: IProduct | null;

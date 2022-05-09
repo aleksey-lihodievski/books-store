@@ -2,7 +2,8 @@ import React from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 import Button from 'components/Button';
-import { Quantity, QuantityController } from './styled';
+import { Quantity } from './components/Quantity';
+import { QuantityController } from './components/QuantityController';
 
 interface IProductQuantityProps {
   increase: () => void;

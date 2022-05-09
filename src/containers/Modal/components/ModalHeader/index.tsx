@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 
 import Title from 'components/Title';
 import Button from 'components/Button';
-import { ModalHeaderComponent } from './styled';
+import { ModalHeaderComponent } from './ModalHeaderComponent';
 
 interface IModalHeaderProps {
   title?: string;

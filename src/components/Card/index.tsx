@@ -1,9 +1,12 @@
 import React from 'react';
 
 import Image from 'components/Image';
-import { CardBottom, CardComponent, CardHeader, CardLink } from './styled';
 import Price from 'components/Price';
 import { IProduct } from 'typings/entities/products';
+import { CardBottom } from './components/CardBottom';
+import { CardComponent } from './components/CardComponent';
+import { CardHeader } from './components/CardHeader';
+import { CardLink } from './components/CardLink';
 
 interface CardProps {
   product: IProduct;

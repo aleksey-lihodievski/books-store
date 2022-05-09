@@ -4,9 +4,10 @@ import ReactDOM from 'react-dom';
 import ModalFooter from './components/ModalFooter';
 
 import ModalHeader from './components/ModalHeader';
-import ModalContent from './components/ModalContent';
+import { ModalContent } from './components/ModalContent';
+import { ModalBody } from './components/ModalBody';
+import { ModalOverlay } from './components/ModalOverlay';
 import { modalsRoot } from 'constants/modals';
-import { ModalBody, ModalOverlay } from './styled';
 
 interface IModalProps {
   children: React.ReactNode;

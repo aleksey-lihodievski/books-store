@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { ButtonComponent, LinkComponent } from './styled';
+import { ButtonComponent } from './components/ButtonComponent';
+import { LinkComponent } from './components/LinkComponent';
 
 interface IButtonProps {
   primary?: boolean;

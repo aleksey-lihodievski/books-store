@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  DesktopNavigation,
-  MobileMenuIcon,
-  Mobile,
-  NavBar,
-  MobileNavigation,
-  DesktopLinks,
-  MobileLinks,
-} from './styled';
 import { useMediaQuery } from 'hooks/media';
 import Container from 'components/Container';
 import Title from 'components/Title';
 import { desktopMedia } from 'constants/media';
 import { links } from 'constants/links';
+import { DesktopLinks } from './components/DesktopLinks';
+import { DesktopNavigation } from './components/DesktopNavigation';
+import { MobileLinks } from './components/MobileLinks';
+import { MobileMenuIcon } from './components/MobileMenuIcon';
+import { MobileNavigation } from './components/MobileNavigation';
+import { NavBar } from './components/NavBar';
+import { MobileMenu } from './components/MobileMenu';
 
 interface NavigationProps {
   title?: string;
@@ -51,9 +49,9 @@ const Navigation: React.FC<NavigationProps> = ({ title, hasImage }) => {
           </DesktopNavigation>
         ) : (
           <>
-            <Mobile open={mobileNavModal} onClick={toggleMobileNav}>
+            <MobileMenu open={mobileNavModal} onClick={toggleMobileNav}>
               <MobileLinks links={links} />
-            </Mobile>
+            </MobileMenu>
             <MobileNavigation>
               {title && !hasImage && <Title white>{title}</Title>}
               <MobileMenuIcon onClick={toggleMobileNav} />

@@ -3,7 +3,8 @@ import React from 'react';
 import Paragraph from 'components/Paragraph';
 import Price from 'components/Price';
 import Button from 'components/Button';
-import { FooterActions, FooterComponent } from './styled';
+import { FooterActions } from './FooterActions';
+import { FooterComponent } from './FooterComponent';
 
 interface ITableFooterProps {
   totalCost: number;

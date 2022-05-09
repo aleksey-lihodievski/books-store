@@ -2,7 +2,7 @@ import React from 'react';
 
 import Chip from 'components/Chip';
 import Scroller from 'components/Scroller';
-import { ChipsArea } from './styled';
+import { ChipsArea } from './components/ChipsArea';
 
 interface IChipsArrayProps<T extends string> {
   value: number;

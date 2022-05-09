@@ -2,12 +2,13 @@ import React from 'react';
 
 import { Column } from 'typings/column';
 import { IProduct } from 'typings/entities/products';
+import { Table } from './components/Table';
 import { TableBody } from './components/TableBody';
 import { TableCell } from './components/TableCell';
 import TableFooter from './components/TableFooter';
 import { TableHead } from './components/TableHead';
 import { TableRow } from './components/TableRow';
-import { Table, TableWrapper } from './styled';
+import { TableWrapper } from './components/TableWrapper';
 
 type ITableListProps<T> = {
   rows: T[];

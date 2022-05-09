@@ -1,5 +1,8 @@
 import React from 'react';
-import { InputBase, InputComponent, InputLabel } from './styled';
+
+import { InputBase } from './components/InputBase';
+import { InputComponent } from './components/InputComponent';
+import { InputLabel } from './components/InputLabel';
 
 interface IInputProps {
   type?: string;

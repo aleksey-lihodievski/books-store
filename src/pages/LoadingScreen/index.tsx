@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Loader } from 'components/Loader';
-import { LoadingScreenBackground } from './style';
+import { LoadingScreenBackground } from './components/LoadingScreenBackground';
 
 const LoadingScreen: React.FC = () => {
   return (
