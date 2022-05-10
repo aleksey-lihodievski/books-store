@@ -1,6 +1,6 @@
 import TableCellWithImage from 'components/TableCellWithImage';
 import ProductQuantity from 'containers/ProductQuantity';
-import { Column } from 'typings/entities/column';
+import { Column } from 'typings/column';
 import { ICartProduct } from 'typings/entities/products';
 
 interface CartColumnsProps {
@@ -55,6 +55,16 @@ export const cartColumns = ({
           quantity={row.quantity}
         />
       );
+    },
+  },
+  {
+    id: 'total',
+    label: 'Position total',
+    align: 'center',
+    flex: 1,
+    minWidth: 150,
+    renderCell: (row) => {
+      return <>{row.quantity * row.price}$</>;
     },
   },
 ];

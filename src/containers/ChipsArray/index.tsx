@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Chip from 'components/Chip';
+import Scroller from 'components/Scroller';
+import { ChipsArea } from './components/ChipsArea';
 
 interface IChipsArrayProps<T extends string> {
   value: number;
@@ -16,18 +18,20 @@ const ChipsArray = <T extends string>({
   onChange,
 }: IChipsArrayProps<T>): React.ReactElement => {
   return (
-    <>
-      {options.map((option, index) => (
-        <Chip
-          checked={index === value}
-          key={index}
-          primary={primary}
-          onClick={() => onChange(index)}
-        >
-          {option}
-        </Chip>
-      ))}
-    </>
+    <Scroller>
+      <ChipsArea>
+        {options.map((option, index) => (
+          <Chip
+            checked={index === value}
+            key={index}
+            primary={primary}
+            onClick={() => onChange(index)}
+          >
+            {option}
+          </Chip>
+        ))}
+      </ChipsArea>
+    </Scroller>
   );
 };
 

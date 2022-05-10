@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-import Header from 'containers/Header';
 import ChipsArray from 'containers/ChipsArray';
+import Header from 'containers/Header';
 import Card from 'components/Card';
 import ProductsList from 'components/ProductsList';
 import Container from 'components/Container';
@@ -17,7 +17,7 @@ import { selectCategories, selectProducts } from 'redux/selectors/products';
 import { addToCart } from 'redux/reducers/cart';
 import { useAppDispatch } from 'hooks/redux';
 import { IProduct } from 'typings/entities/products';
-import { Scroller } from './style';
+import { Categories } from './components/Categories';
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -55,24 +55,26 @@ const Products: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <Body>
+    <>
       <Header title='Products' image={ShopHeader} />
-      <Container>
-        <Scroller>
-          <ChipsArray
-            primary
-            value={chipValue}
-            options={categories}
-            onChange={setFilter}
-          />
-        </Scroller>
-        <ProductsList>
-          {products.allProducts.map((product) => (
-            <Card key={product.id} onClick={onAddToCart} product={product} />
-          ))}
-        </ProductsList>
-      </Container>
-    </Body>
+      <Body>
+        <Container>
+          <Categories>
+            <ChipsArray
+              primary
+              value={chipValue}
+              options={categories}
+              onChange={setFilter}
+            />
+          </Categories>
+          <ProductsList>
+            {products.allProducts.map((product) => (
+              <Card key={product.id} onClick={onAddToCart} product={product} />
+            ))}
+          </ProductsList>
+        </Container>
+      </Body>
+    </>
   );
 };
 

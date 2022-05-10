@@ -1,7 +1,7 @@
 import { http } from 'api';
 import { TCategory } from 'typings/entities/categories/index';
 import { IProduct } from 'typings/entities/products/index';
-import { IFilter } from 'typings/entities/filter/index';
+import { IFilter } from 'typings/filter/index';
 
 export const getCategories = async (): Promise<TCategory[]> => {
   const { data } = await http.get('/products/categories');

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import Header from 'containers/Header';
@@ -9,13 +9,19 @@ import { selectCart } from 'redux/selectors/cart';
 import { decreaseQuantity, increaseQuantity } from 'redux/reducers/cart';
 import { useAppDispatch } from 'hooks/redux';
 import Container from 'components/Container';
-import useMediaQuery from 'hooks/media';
 import { cartColumns } from 'constants/cart';
+import Footer from './components/Footer';
 
 const CartPage: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const isDesktop = useMediaQuery('(min-width: 768px)');
+  const cart = useSelector(selectCart);
+  const totalCost = useMemo(
+    () =>
+      cart.usersCart.reduce((acc, item) => acc + item.price * item.quantity, 0),
+    [cart],
+  );
+  const ableToCheckout = useMemo(() => Boolean(cart.usersCart.length), [cart]);
 
   const handleIncreaseQuantity = useCallback(
     (id: number) => {
@@ -36,15 +42,21 @@ const CartPage: React.FC = () => {
     decreaseQuantity: handleDecreaseQuantity,
   });
 
-  const cart = useSelector(selectCart);
-
   return (
-    <Body>
+    <>
       <Header title='Cart' image={CartHeader} />
-      <Container>
-        <Table columns={columns} rows={cart.usersCart} />
-      </Container>
-    </Body>
+      <Body>
+        <Container>
+          <Table
+            columns={columns}
+            rows={cart.usersCart}
+            footer={
+              <Footer totalCost={totalCost} ableToCheckout={ableToCheckout} />
+            }
+          />
+        </Container>
+      </Body>
+    </>
   );
 };
 

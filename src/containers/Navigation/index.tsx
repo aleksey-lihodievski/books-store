@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
-// import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 
+import { useMediaQuery } from 'hooks/media';
 import Container from 'components/Container';
-import { Desktop, MobileMenuIcon, Mobile, NavBar } from './styled';
-
-import useMediaQuery from 'hooks/media';
-import Links from './common-components/Links';
+import Title from 'components/Title';
+import { desktopMedia } from 'constants/media';
+import { links } from 'constants/links';
+import { DesktopNavigation } from './components/DesktopNavigation';
+import { MobileMenuIcon } from './components/MobileMenuIcon';
+import { MobileNavigation } from './components/MobileNavigation';
+import { NavBar } from './components/NavBar';
+import { MobileMenu } from './components/MobileMenu';
+import Links from './components/Links';
 
 interface NavigationProps {
+  title?: string;
   hasImage?: boolean;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ hasImage }) => {
+const Navigation: React.FC<NavigationProps> = ({ title, hasImage }) => {
   const [scrolled, setScrolled] = useState(false || !hasImage);
 
-  const isDesktop = useMediaQuery('(min-width: 992px)');
+  const isDesktop = useMediaQuery(desktopMedia);
   const [mobileNavModal, setMobileNavModal] = useState(false);
 
   const toggleMobileNav = () => {
@@ -36,15 +42,19 @@ const Navigation: React.FC<NavigationProps> = ({ hasImage }) => {
     <NavBar scrolled={scrolled}>
       <Container>
         {isDesktop ? (
-          <Desktop>
-            <Links />
-          </Desktop>
+          <DesktopNavigation>
+            {title && !hasImage && <Title white>{title}</Title>}
+            <Links links={links} alignRight />
+          </DesktopNavigation>
         ) : (
           <>
-            <Mobile open={mobileNavModal} onClick={toggleMobileNav}>
-              <Links />
-            </Mobile>
-            <MobileMenuIcon onClick={toggleMobileNav} />
+            <MobileMenu open={mobileNavModal} onClick={toggleMobileNav}>
+              <Links links={links} vertical />
+            </MobileMenu>
+            <MobileNavigation>
+              {title && !hasImage && <Title white>{title}</Title>}
+              <MobileMenuIcon onClick={toggleMobileNav} />
+            </MobileNavigation>
           </>
         )}
       </Container>

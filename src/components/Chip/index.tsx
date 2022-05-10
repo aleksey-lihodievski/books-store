@@ -1,25 +1,57 @@
-import React from 'react';
+import styled, { css } from 'styled-components';
 
-import { ChipBody } from './styled';
+import { Theme } from 'styles/theme';
 
 interface IChipProps {
   primary?: boolean;
   checked?: boolean;
-  children: string;
-  onClick: (value: unknown) => unknown;
 }
 
-const Chip: React.FC<IChipProps> = ({
-  primary,
-  checked,
-  children,
-  onClick,
-}) => {
-  return (
-    <ChipBody checked={checked} primary={primary} onClick={onClick}>
-      {children}
-    </ChipBody>
-  );
-};
+const ChipBody = styled.div<IChipProps>`
+  display: inline-block;
+  white-space: nowrap;
+  column-gap: 0.3rem;
+  padding: 0.3rem 1rem;
+  border-radius: 99999px;
+  background: transparent;
+  border: 2px solid;
+  color: ${(props) => (props.theme as Theme).palette.gray.dark};
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.2s all ease;
 
-export default Chip;
+  ${(props) =>
+    props.checked &&
+    css`
+      background: ${(props.theme as Theme).palette.gray.main};
+    `}
+
+  ${(props) =>
+    props.checked &&
+    props.primary &&
+    css`
+      background: ${(props.theme as Theme).palette.primary.main};
+    `}
+
+  &:hover {
+    background: ${(props) => (props.theme as Theme).palette.gray.light};
+  }
+  &:active {
+    background: ${(props) => (props.theme as Theme).palette.gray.main};
+  }
+
+  ${(props) =>
+    props.primary &&
+    css`
+      color: ${(props) => (props.theme as Theme).palette.primary.dark};
+
+      &:hover {
+        background: ${(props) => (props.theme as Theme).palette.primary.light};
+      }
+      &:active {
+        background: ${(props) => (props.theme as Theme).palette.primary.main};
+      }
+    `}
+`;
+
+export default ChipBody;

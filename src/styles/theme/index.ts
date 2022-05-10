@@ -49,7 +49,8 @@ export const theme = {
     },
     gray: {
       main: '#bdbdbd',
-      light: '#eeeeee',
+      light: '#e0e0e0',
+      extraLight: '#eeeeee',
       dark: '#424242',
       background: '#f5f5f5',
       contrastText: '#fff',

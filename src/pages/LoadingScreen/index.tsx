@@ -1,17 +1,14 @@
 import React from 'react';
 
 import { Loader } from 'components/Loader';
-import Body from 'components/Body';
-import { LoadingScreenBackground } from './style';
+import { LoadingScreenBackground } from './components/LoadingScreenBackground';
 
 const LoadingScreen: React.FC = () => {
   return (
-    <Body>
-      <LoadingScreenBackground>
-        <Loader />
-      </LoadingScreenBackground>
-    </Body>
+    <LoadingScreenBackground>
+      <Loader />
+    </LoadingScreenBackground>
   );
 };
 
-export default LoadingScreen;
+export default React.memo(LoadingScreen);

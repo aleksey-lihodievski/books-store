@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { HeaderTag } from './styled';
 import Container from 'components/Container';
 import Navigation from 'containers/Navigation';
-import Title from 'components/Title';
+import PageTitle from 'components/PageTitle';
+import { HeaderComponent } from './components/HeaderComponent';
 
 interface IHeaderProps {
   title?: string;
@@ -12,13 +12,15 @@ interface IHeaderProps {
 
 const Header: React.FC<IHeaderProps> = ({ title, image }) => {
   return (
-    <HeaderTag image={image}>
-      <Navigation hasImage={Boolean(image)} />
+    <HeaderComponent image={image}>
+      <Navigation title={title} hasImage={Boolean(image)} />
       <Container>
-        {title && <Title simple={!Boolean(image)}>{title}</Title>}
+        {title && image && (
+          <PageTitle simple={!Boolean(image)}>{title}</PageTitle>
+        )}
       </Container>
-    </HeaderTag>
+    </HeaderComponent>
   );
 };
 
-export default Header;
+export default React.memo(Header);
