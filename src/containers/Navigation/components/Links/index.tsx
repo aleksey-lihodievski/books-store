@@ -6,12 +6,13 @@ import { NavBarLink } from './components/NavBarLink';
 
 interface ILinksProps {
   links: TLink[];
-  className?: string;
+  vertical?: boolean;
+  alignRight?: boolean;
 }
 
-const Links: React.FC<ILinksProps> = ({ links, className }) => {
+const Links: React.FC<ILinksProps> = ({ links, vertical, alignRight }) => {
   return (
-    <LinksContainer className={className}>
+    <LinksContainer vertical={vertical} alignRight={alignRight}>
       {links.map((link) => (
         <NavBarLink key={link.href} to={link.href} end>
           {link.title}

@@ -5,13 +5,12 @@ import Container from 'components/Container';
 import Title from 'components/Title';
 import { desktopMedia } from 'constants/media';
 import { links } from 'constants/links';
-import { DesktopLinks } from './components/DesktopLinks';
 import { DesktopNavigation } from './components/DesktopNavigation';
-import { MobileLinks } from './components/MobileLinks';
 import { MobileMenuIcon } from './components/MobileMenuIcon';
 import { MobileNavigation } from './components/MobileNavigation';
 import { NavBar } from './components/NavBar';
 import { MobileMenu } from './components/MobileMenu';
+import Links from './components/Links';
 
 interface NavigationProps {
   title?: string;
@@ -45,12 +44,12 @@ const Navigation: React.FC<NavigationProps> = ({ title, hasImage }) => {
         {isDesktop ? (
           <DesktopNavigation>
             {title && !hasImage && <Title white>{title}</Title>}
-            <DesktopLinks links={links} />
+            <Links links={links} alignRight />
           </DesktopNavigation>
         ) : (
           <>
             <MobileMenu open={mobileNavModal} onClick={toggleMobileNav}>
-              <MobileLinks links={links} />
+              <Links links={links} vertical />
             </MobileMenu>
             <MobileNavigation>
               {title && !hasImage && <Title white>{title}</Title>}

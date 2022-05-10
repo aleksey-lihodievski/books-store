@@ -9,7 +9,6 @@ interface IChipsArrayProps<T extends string> {
   primary?: boolean;
   options: T[];
   onChange: (value: number) => void;
-  className?: string;
 }
 
 const ChipsArray = <T extends string>({
@@ -17,10 +16,9 @@ const ChipsArray = <T extends string>({
   primary,
   options,
   onChange,
-  className,
 }: IChipsArrayProps<T>): React.ReactElement => {
   return (
-    <Scroller className={className}>
+    <Scroller>
       <ChipsArea>
         {options.map((option, index) => (
           <Chip

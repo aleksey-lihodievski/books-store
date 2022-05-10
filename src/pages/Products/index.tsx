@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
+import ChipsArray from 'containers/ChipsArray';
 import Header from 'containers/Header';
 import Card from 'components/Card';
 import ProductsList from 'components/ProductsList';
@@ -58,12 +59,14 @@ const Products: React.FC = () => {
       <Header title='Products' image={ShopHeader} />
       <Body>
         <Container>
-          <Categories
-            primary
-            value={chipValue}
-            options={categories}
-            onChange={setFilter}
-          />
+          <Categories>
+            <ChipsArray
+              primary
+              value={chipValue}
+              options={categories}
+              onChange={setFilter}
+            />
+          </Categories>
           <ProductsList>
             {products.allProducts.map((product) => (
               <Card key={product.id} onClick={onAddToCart} product={product} />
