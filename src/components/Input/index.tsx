@@ -11,7 +11,6 @@ interface IInputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  className?: string;
   disabled?: boolean;
   required?: boolean;
   autoFocus?: boolean;

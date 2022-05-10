@@ -7,7 +7,6 @@ interface IButtonProps {
   primary?: boolean;
   dense?: boolean;
   disabled?: boolean;
-  className?: string;
   href?: string;
   onClick?: () => void;
   children: React.ReactNode;
@@ -18,7 +17,6 @@ const Button: React.FC<IButtonProps> = ({
   primary,
   dense,
   disabled,
-  className,
   href,
   children,
 }) => {
@@ -30,7 +28,6 @@ const Button: React.FC<IButtonProps> = ({
           onClick={onClick}
           primary={primary}
           dense={dense}
-          className={className}
         >
           {children}
         </ButtonComponent>
@@ -44,7 +41,6 @@ const Button: React.FC<IButtonProps> = ({
       onClick={onClick}
       primary={primary}
       dense={dense}
-      className={className}
     >
       {children}
     </ButtonComponent>
