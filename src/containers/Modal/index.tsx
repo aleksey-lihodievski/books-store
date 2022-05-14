@@ -10,10 +10,12 @@ import { ModalOverlay } from './components/ModalOverlay';
 import { modalsRoot } from 'constants/modals';
 
 interface IModalProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   visible?: boolean;
   className?: string;
   title?: string;
+  minWidth?: string | number;
+  maxWidth?: string | number;
   footer?: React.ReactNode;
   transitionTime?: number;
   onSubmit: () => void;
@@ -28,6 +30,8 @@ const Modal: React.FC<IModalProps> = ({
   visible,
   className,
   title,
+  minWidth,
+  maxWidth,
   transitionTime,
   footer,
   onSubmit,
@@ -61,9 +65,11 @@ const Modal: React.FC<IModalProps> = ({
           transitionTime={transitionTime as number}
           transitionedIn={isAnimated}
           visible={visible}
+          minWidth={minWidth}
+          maxWidth={maxWidth}
         >
           <ModalHeader onCancel={onCancel} title={title} />
-          <ModalContent>{children}</ModalContent>
+          {children && <ModalContent>{children}</ModalContent>}
           {footer || (
             <ModalFooter
               onSubmit={onSubmit}

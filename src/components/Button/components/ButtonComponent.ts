@@ -65,7 +65,6 @@ export const ButtonComponent = styled.button<IButtonComponentProps>`
 
       &:hover {
         background: ${(props) => (props.theme as Theme).palette.primary.light};
-        /* background: transparent; */
         color: ${(props) => (props.theme as Theme).palette.primary.dark};
       }
       &:active {

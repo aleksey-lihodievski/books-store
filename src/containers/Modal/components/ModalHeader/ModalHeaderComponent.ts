@@ -10,6 +10,7 @@ export const ModalHeaderComponent = styled.div`
   width: 100%;
   box-sizing: border-box;
   padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid
     ${(props) => (props.theme as Theme).palette.gray.main};
   background-color: ${(props) =>

@@ -1,33 +1,72 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import { BsBag } from 'react-icons/bs';
 
 import Header from 'containers/Header';
+import Modal from 'containers/Modal';
 import Body from 'components/Body';
 import Container from 'components/Container';
-import Input from 'components/Input';
-import Button from 'components/Button';
-import Modal from 'containers/Modal';
+import { FixedButton } from 'components/FixedButton';
+import OrderForm from './components/OrderForm';
+import { useAppDispatch } from 'hooks/redux';
+import { IOrder } from 'typings/order';
+import { buyCart } from 'redux/reducers/cart';
 
 const Checkout: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const [visible, setVisible] = useState(false);
 
-  const toggleVisible = () => {
-    setVisible((visible) => !visible);
-  };
+  const submitRef = useRef<HTMLButtonElement>(null);
+
+  const openModal = useCallback(() => {
+    setVisible(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setVisible(false);
+  }, []);
+
+  const handleSubmit = useCallback(
+    async (values: IOrder) => {
+      try {
+        closeModal();
+        await dispatch(buyCart()).unwrap();
+        alert('Ordered successfully');
+      } catch (e: any) {
+        throw new Error(e.message);
+      }
+    },
+    [closeModal, dispatch],
+  );
+
+  const triggerSubmit = useCallback(() => {
+    submitRef.current?.click();
+  }, []);
 
   return (
     <>
       <Header title='Checkout' />
       <Body>
         <Container>
-          <Input />
+          <OrderForm handleSubmit={handleSubmit} submitRef={submitRef} />
           <Modal
+            title='Confirm the order?'
             visible={visible}
-            onSubmit={toggleVisible}
-            onCancel={toggleVisible}
+            onSubmit={triggerSubmit}
+            onCancel={closeModal}
+            maxWidth='350px'
+            submitText='Yes'
+            cancelText='No'
+          />
+          <FixedButton
+            type='submit'
+            primary
+            bottom='3rem'
+            right='3rem'
+            onClick={openModal}
           >
-            visible
-          </Modal>
-          <Button onClick={toggleVisible}>Toggle Modal</Button>
+            <BsBag />
+          </FixedButton>
         </Container>
       </Body>
     </>
