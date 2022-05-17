@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { stringOrNumberCSSProp } from 'helpers/styles/index';
+
 interface IModalBodyProps {
   visible?: boolean;
   transitionedIn?: boolean;
@@ -18,17 +20,13 @@ export const ModalBody = styled.div<IModalBodyProps>`
   max-width: ${(props) =>
     props.maxWidth
       ? css`
-          ${typeof props.maxWidth === 'number'
-            ? props.maxWidth + 'px'
-            : props.maxWidth}
+          ${stringOrNumberCSSProp(props.maxWidth)}
         `
       : '500px'};
   min-width: ${(props) =>
     props.minWidth
       ? css`
-          ${typeof props.minWidth === 'number'
-            ? props.minWidth + 'px'
-            : props.minWidth}
+          ${stringOrNumberCSSProp(props.minWidth)}
         `
       : 'min-content'};
   background-color: ${(props) => props.theme.palette.gray.background};

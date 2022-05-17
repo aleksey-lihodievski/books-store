@@ -1,12 +1,15 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 
-import Input from 'components/Input';
 import FormInformationBlock from 'containers/FormInformationBlock';
+import Input from 'components/Input';
+import Button from 'components/Button';
 import { initialOrder } from 'constants/orders';
+import { desktopMedia, mobileMedia, tabletMedia } from 'constants/media';
 import { orderSchema } from 'validations/order';
 import { IOrder } from 'typings/order';
 import { Columns } from '../Columns';
+import { useMediaQuery } from 'hooks/media';
 
 interface IOrderFormProps {
   submitRef: React.RefObject<HTMLButtonElement>;
@@ -14,6 +17,24 @@ interface IOrderFormProps {
 }
 
 const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit, submitRef }) => {
+  const [columnsQuantity, setColumnsQuantity] = useState(1);
+
+  const isDesktop = useMediaQuery(desktopMedia);
+  const isTablet = useMediaQuery(tabletMedia);
+  const isMobile = useMediaQuery(mobileMedia);
+
+  useEffect(() => {
+    if (isDesktop) {
+      setColumnsQuantity(3);
+    }
+    if (isTablet) {
+      setColumnsQuantity(2);
+    }
+    if (isMobile) {
+      setColumnsQuantity(1);
+    }
+  }, [isDesktop, isTablet, isMobile]);
+
   const onSubmit = useCallback(
     (
       values: IOrder,
@@ -42,7 +63,7 @@ const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit, submitRef }) => {
         handleSubmit,
       }) => (
         <Form onSubmit={handleSubmit}>
-          <Columns quantity={3}>
+          <Columns quantity={columnsQuantity}>
             <FormInformationBlock title='Personal information'>
               <Input
                 type='text'
@@ -186,9 +207,9 @@ const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit, submitRef }) => {
               />
             </FormInformationBlock>
           </Columns>
-          <button ref={submitRef} type='submit' hidden>
+          <Button ref={submitRef} type='submit' hidden>
             submit
-          </button>
+          </Button>
         </Form>
       )}
     </Formik>
@@ -196,7 +217,3 @@ const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit, submitRef }) => {
 };
 
 export default OrderForm;
-
-//  (
-//   data?: Partial<FormikState<IOrder>> | undefined,
-// ): => FormEvent<HTMLFormElement>,

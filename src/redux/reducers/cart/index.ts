@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { IProduct, ICartProduct } from 'typings/entities/products';
 
@@ -13,14 +13,6 @@ const initialState: ICartState = {
   loading: false,
   error: false,
 };
-
-export const buyCart = createAsyncThunk('cart/buyCart', async () => {
-  await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1000);
-  });
-});
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -41,6 +33,10 @@ const cartSlice = createSlice({
       }
     },
 
+    buyCart: (state: ICartState) => {
+      state.usersCart = [];
+    },
+
     increaseQuantity: (state: ICartState, action: PayloadAction<number>) => {
       state.usersCart.map((product) => {
         if (product.id === action.payload) product.quantity += 1;
@@ -59,21 +55,8 @@ const cartSlice = createSlice({
       );
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(buyCart.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(buyCart.fulfilled, (state) => {
-      state.loading = false;
-      state.usersCart = [];
-    });
-    builder.addCase(buyCart.rejected, (state) => {
-      state.error = true;
-      state.loading = false;
-    });
-  },
 });
 
 export default cartSlice.reducer;
-export const { addToCart, increaseQuantity, decreaseQuantity } =
+export const { addToCart, buyCart, increaseQuantity, decreaseQuantity } =
   cartSlice.actions;

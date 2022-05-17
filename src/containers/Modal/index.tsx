@@ -45,11 +45,12 @@ const Modal: React.FC<IModalProps> = ({
   const isAnimated = useMountTransition(!!visible, transitionTime as number);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
       document.body.style.overflow = 'unset';
-    };
-  }, []);
+    }
+  }, [visible]);
 
   if (visible || isAnimated)
     return ReactDOM.createPortal(

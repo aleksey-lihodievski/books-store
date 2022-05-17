@@ -6,7 +6,7 @@ export const InformationBlock = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  align-self: flex-start;
+  align-self: center;
   justify-content: flex-start;
   padding: 0.7rem 0.5rem;
   border-radius: 0.5rem;

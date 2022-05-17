@@ -13,3 +13,4 @@ export const initialOrder = {
   expiryDate: '',
   cvcCode: '',
 };
+export const deniedNumbers = ['e', 'E', '+', '-'];

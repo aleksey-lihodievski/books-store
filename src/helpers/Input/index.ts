@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { deniedNumbers } from 'constants/orders/index';
+
 export const blockInvalidChar: React.KeyboardEventHandler<HTMLInputElement> = (
   e,
-) => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
+) => deniedNumbers.includes(e.key) && e.preventDefault();

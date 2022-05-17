@@ -10,4 +10,5 @@ export const Columns = styled.div<IColumnsProps>`
   grid-template-columns: repeat(${(props) => props.quantity}, 1fr);
   grid-template-rows: auto;
   column-gap: 1.5rem;
+  row-gap: 1.5rem;
 `;

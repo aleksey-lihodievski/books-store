@@ -21,6 +21,11 @@ export const ButtonComponent = styled.button<IButtonComponentProps>`
   padding: 7px 20px;
   text-decoration: none;
   cursor: pointer;
+
+  &[hidden] {
+    display: none;
+  }
+
   ${(props) =>
     props.dense &&
     css`

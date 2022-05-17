@@ -1,23 +1,30 @@
 import React from 'react';
 
+import { IButtonTypes } from 'typings/button';
 import { ButtonComponent } from './components/ButtonComponent';
 import { LinkComponent } from './components/LinkComponent';
 
 interface IButtonProps {
   primary?: boolean;
+  type?: IButtonTypes;
+  hidden?: boolean;
   dense?: boolean;
   disabled?: boolean;
   href?: string;
+  buttonRef?: React.ForwardedRef<HTMLButtonElement>;
   onClick?: () => void;
   children: React.ReactNode;
 }
 
 const Button: React.FC<IButtonProps> = ({
-  onClick,
   primary,
+  type,
+  hidden,
   dense,
   disabled,
   href,
+  buttonRef,
+  onClick,
   children,
 }) => {
   if (href) {
@@ -37,6 +44,9 @@ const Button: React.FC<IButtonProps> = ({
 
   return (
     <ButtonComponent
+      type={type}
+      ref={buttonRef}
+      hidden={hidden}
       disabled={disabled}
       onClick={onClick}
       primary={primary}
@@ -47,4 +57,6 @@ const Button: React.FC<IButtonProps> = ({
   );
 };
 
-export default React.memo(Button);
+export default React.forwardRef<HTMLButtonElement, IButtonProps>(
+  (props, ref) => <Button {...props} buttonRef={ref} />,
+);

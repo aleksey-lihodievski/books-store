@@ -30,7 +30,7 @@ const Checkout: React.FC = () => {
     async (values: IOrder) => {
       try {
         closeModal();
-        await dispatch(buyCart()).unwrap();
+        dispatch(buyCart());
         alert('Ordered successfully');
       } catch (e: any) {
         throw new Error(e.message);

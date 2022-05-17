@@ -24,7 +24,7 @@ const fadeOut = keyframes`
   }
 `;
 
-export const MobileMenu = styled.div<IMobileMenuProps>`
+export const MobileMenuComponent = styled.div<IMobileMenuProps>`
   opacity: ${(props) => (props.open ? 1 : 0)};
   animation: ${(props) => (props.open ? fadeIn : fadeOut)} 0.1s linear;
 

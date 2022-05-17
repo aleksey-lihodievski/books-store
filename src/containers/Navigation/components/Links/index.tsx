@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { TLink } from 'typings/link';
+import { ILink } from 'typings/link';
 import { LinksContainer } from './components/LinksContainer';
 import { NavBarLink } from './components/NavBarLink';
 
 interface ILinksProps {
-  links: TLink[];
+  links: ILink[];
   vertical?: boolean;
   alignRight?: boolean;
 }
