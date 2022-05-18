@@ -1,33 +1,34 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 
 import Header from 'containers/Header';
 import Body from 'components/Body';
 import Container from 'components/Container';
-import Input from 'components/Input';
-import Button from 'components/Button';
-import Modal from 'containers/Modal';
+import OrderForm from './components/OrderForm';
+import CheckoutHeader from 'assets/headers/checkout-header.jpg';
+import { useAppDispatch } from 'hooks/redux';
+import { IOrder } from 'typings/order';
+import { buyCart } from 'redux/reducers/cart';
 
 const Checkout: React.FC = () => {
-  const [visible, setVisible] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const toggleVisible = () => {
-    setVisible((visible) => !visible);
-  };
+  const handleSubmit = useCallback(
+    (values: IOrder) => {
+      try {
+        dispatch(buyCart());
+      } catch (e: any) {
+        throw new Error(e.message);
+      }
+    },
+    [dispatch],
+  );
 
   return (
     <>
-      <Header title='Checkout' />
+      <Header title='Checkout' image={CheckoutHeader} />
       <Body>
         <Container>
-          <Input />
-          <Modal
-            visible={visible}
-            onSubmit={toggleVisible}
-            onCancel={toggleVisible}
-          >
-            visible
-          </Modal>
-          <Button onClick={toggleVisible}>Toggle Modal</Button>
+          <OrderForm handleSubmit={handleSubmit} />
         </Container>
       </Body>
     </>

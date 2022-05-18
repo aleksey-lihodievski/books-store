@@ -1,5 +1,5 @@
 {
-  "name": "books-store",
+  "name": "fake-store",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,9 +14,9 @@
     "@types/react-dom": "^18.0.0",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
+    "formik": "^2.2.9",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-hook-form": "^7.30.0",
     "react-icons": "^4.3.1",
     "react-redux": "^8.0.0",
     "react-router-dom": "^6.3.0",

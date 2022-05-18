@@ -1,4 +1,4 @@
-export type TLink = {
+export interface ILink {
   href: string;
   title: string;
-};
+}

@@ -6,16 +6,16 @@ import { TCategory } from 'typings/entities/categories';
 import { IProduct } from 'typings/entities/products';
 import { RootState } from 'redux/store/index';
 
-type IState = {
+export interface IProductsState {
   allProducts: Array<IProduct>;
   categories: TCategory[];
   filter: TCategory;
   filterDirection: TFilterDirection;
   loading: boolean;
   error: boolean;
-};
+}
 
-const initialState: IState = {
+const initialState: IProductsState = {
   allProducts: [],
   categories: [],
   filter: 'all',
@@ -47,7 +47,7 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    setCategory: (state, action: PayloadAction<TCategory>) => {
+    setCategory: (state: IProductsState, action: PayloadAction<TCategory>) => {
       state.filter = action.payload;
     },
   },

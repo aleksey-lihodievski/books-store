@@ -21,6 +21,11 @@ export const ButtonComponent = styled.button<IButtonComponentProps>`
   padding: 7px 20px;
   text-decoration: none;
   cursor: pointer;
+
+  &[hidden] {
+    display: none;
+  }
+
   ${(props) =>
     props.dense &&
     css`
@@ -65,7 +70,6 @@ export const ButtonComponent = styled.button<IButtonComponentProps>`
 
       &:hover {
         background: ${(props) => (props.theme as Theme).palette.primary.light};
-        /* background: transparent; */
         color: ${(props) => (props.theme as Theme).palette.primary.dark};
       }
       &:active {

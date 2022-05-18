@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useMediaQuery } from 'hooks/media';
 import Container from 'components/Container';
@@ -9,8 +9,9 @@ import { DesktopNavigation } from './components/DesktopNavigation';
 import { MobileMenuIcon } from './components/MobileMenuIcon';
 import { MobileNavigation } from './components/MobileNavigation';
 import { NavBar } from './components/NavBar';
-import { MobileMenu } from './components/MobileMenu';
 import Links from './components/Links';
+import MobileMenu from './components/MobileMenu';
+import { useMountTransition } from 'hooks/mount';
 
 interface NavigationProps {
   title?: string;
@@ -22,10 +23,15 @@ const Navigation: React.FC<NavigationProps> = ({ title, hasImage }) => {
 
   const isDesktop = useMediaQuery(desktopMedia);
   const [mobileNavModal, setMobileNavModal] = useState(false);
+  const isAnimated = useMountTransition(!!mobileNavModal, 300);
 
-  const toggleMobileNav = () => {
-    setMobileNavModal(!mobileNavModal);
-  };
+  const toggleMobileNav = useCallback(() => {
+    setMobileNavModal((open) => !open);
+  }, []);
+
+  const onCloseMobileNav = useCallback(() => {
+    setMobileNavModal(false);
+  }, []);
 
   useEffect(() => {
     const handleChangeNavbar = () => {
@@ -48,9 +54,13 @@ const Navigation: React.FC<NavigationProps> = ({ title, hasImage }) => {
           </DesktopNavigation>
         ) : (
           <>
-            <MobileMenu open={mobileNavModal} onClick={toggleMobileNav}>
-              <Links links={links} vertical />
-            </MobileMenu>
+            {(mobileNavModal || isAnimated) && (
+              <MobileMenu
+                open={mobileNavModal}
+                links={links}
+                onCloseMobileMenu={onCloseMobileNav}
+              />
+            )}
             <MobileNavigation>
               {title && !hasImage && <Title white>{title}</Title>}
               <MobileMenuIcon onClick={toggleMobileNav} />
