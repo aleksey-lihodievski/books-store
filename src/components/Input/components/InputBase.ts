@@ -15,7 +15,7 @@ export const InputBase = styled.input<IInputBaseProps>`
   box-sizing: border-box;
   background: none;
   outline: none;
-  appearance: none !important;
+  appearance: none;
 
   ${(props) =>
     props.disabled &&

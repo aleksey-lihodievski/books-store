@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
+import { BsBag } from 'react-icons/bs';
 
 import FormInformationBlock from 'containers/FormInformationBlock';
+import Modal from 'containers/Modal';
 import Input from 'components/Input';
-import Button from 'components/Button';
+import { FixedButton } from 'components/FixedButton';
 import { initialOrder } from 'constants/orders';
 import { desktopMedia, mobileMedia, tabletMedia } from 'constants/media';
 import { orderSchema } from 'validations/order';
@@ -12,16 +14,25 @@ import { Columns } from '../Columns';
 import { useMediaQuery } from 'hooks/media';
 
 interface IOrderFormProps {
-  submitRef: React.RefObject<HTMLButtonElement>;
   handleSubmit: (values: IOrder) => void;
 }
 
-const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit, submitRef }) => {
+const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit }) => {
   const [columnsQuantity, setColumnsQuantity] = useState(1);
 
   const isDesktop = useMediaQuery(desktopMedia);
   const isTablet = useMediaQuery(tabletMedia);
   const isMobile = useMediaQuery(mobileMedia);
+
+  const [visible, setVisible] = useState(false);
+
+  const openModal = useCallback(() => {
+    setVisible(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setVisible(false);
+  }, []);
 
   useEffect(() => {
     if (isDesktop) {
@@ -36,16 +47,17 @@ const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit, submitRef }) => {
   }, [isDesktop, isTablet, isMobile]);
 
   const onSubmit = useCallback(
-    (
+    async (
       values: IOrder,
       { setSubmitting, setErrors, resetForm }: FormikHelpers<IOrder>,
     ) => {
       handleSubmit(values);
+      closeModal();
       setSubmitting(false);
       setErrors({});
       resetForm();
     },
-    [handleSubmit],
+    [handleSubmit, closeModal],
   );
 
   return (
@@ -60,9 +72,9 @@ const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit, submitRef }) => {
         touched,
         handleChange,
         handleBlur,
-        handleSubmit,
+        handleSubmit: handleSubmitForm,
       }) => (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmitForm}>
           <Columns quantity={columnsQuantity}>
             <FormInformationBlock title='Personal information'>
               <Input
@@ -207,9 +219,24 @@ const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit, submitRef }) => {
               />
             </FormInformationBlock>
           </Columns>
-          <Button ref={submitRef} type='submit' hidden>
-            submit
-          </Button>
+          <FixedButton
+            type='submit'
+            primary
+            bottom='3rem'
+            right='3rem'
+            onClick={openModal}
+          >
+            <BsBag />
+          </FixedButton>
+          <Modal
+            title='Confirm the order?'
+            visible={visible}
+            onSubmit={handleSubmitForm}
+            onCancel={closeModal}
+            maxWidth='350px'
+            submitText='Yes'
+            cancelText='No'
+          />
         </Form>
       )}
     </Formik>

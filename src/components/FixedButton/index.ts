@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
+import { stringOrNumberCSSProp } from 'helpers/styles/index';
 import { Theme } from 'styles/theme';
 
 interface IFixedButtonProps {
@@ -33,25 +34,25 @@ export const FixedButton = styled.button<IFixedButtonProps>`
   border: 2px solid;
   font-size: 1.7rem;
   color: ${(props) => (props.theme as Theme).palette.gray.dark};
-  top: ${(props) =>
+  ${(props) =>
     props.top &&
     css`
-      ${typeof props.top === 'number' ? props.top + 'px' : props.top}
+      top: ${stringOrNumberCSSProp(props.top)};
     `};
-  left: ${(props) =>
+  ${(props) =>
     props.left &&
     css`
-      ${typeof props.left === 'number' ? props.left + 'px' : props.left}
+      left: ${stringOrNumberCSSProp(props.left)};
     `};
-  right: ${(props) =>
+  ${(props) =>
     props.right &&
     css`
-      ${typeof props.right === 'number' ? props.right + 'px' : props.right}
+      right: ${stringOrNumberCSSProp(props.right)};
     `};
-  bottom: ${(props) =>
+  ${(props) =>
     props.bottom &&
     css`
-      ${typeof props.bottom === 'number' ? props.bottom + 'px' : props.bottom}
+      bottom: ${stringOrNumberCSSProp(props.bottom)};
     `};
   width: fit-content;
   aspect-ratio: 1/1;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { deniedNumbers } from 'constants/orders/index';
+import { deniedNumbers } from 'constants/inputs';
 
 export const blockInvalidChar: React.KeyboardEventHandler<HTMLInputElement> = (
   e,
