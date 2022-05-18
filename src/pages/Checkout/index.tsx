@@ -4,6 +4,7 @@ import Header from 'containers/Header';
 import Body from 'components/Body';
 import Container from 'components/Container';
 import OrderForm from './components/OrderForm';
+import CheckoutHeader from 'assets/headers/checkout-header.jpg';
 import { useAppDispatch } from 'hooks/redux';
 import { IOrder } from 'typings/order';
 import { buyCart } from 'redux/reducers/cart';
@@ -24,7 +25,7 @@ const Checkout: React.FC = () => {
 
   return (
     <>
-      <Header title='Checkout' />
+      <Header title='Checkout' image={CheckoutHeader} />
       <Body>
         <Container>
           <OrderForm handleSubmit={handleSubmit} />

@@ -7,7 +7,6 @@ import { LinkComponent } from './components/LinkComponent';
 interface IButtonProps {
   primary?: boolean;
   type?: IButtonTypes;
-  hidden?: boolean;
   dense?: boolean;
   disabled?: boolean;
   href?: string;
@@ -19,7 +18,6 @@ interface IButtonProps {
 const Button: React.FC<IButtonProps> = ({
   primary,
   type,
-  hidden,
   dense,
   disabled,
   href,
@@ -46,7 +44,6 @@ const Button: React.FC<IButtonProps> = ({
     <ButtonComponent
       type={type}
       ref={buttonRef}
-      hidden={hidden}
       disabled={disabled}
       onClick={onClick}
       primary={primary}
