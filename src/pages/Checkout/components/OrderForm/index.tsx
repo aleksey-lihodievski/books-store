@@ -220,7 +220,7 @@ const OrderForm: React.FC<IOrderFormProps> = ({ handleSubmit }) => {
             </FormInformationBlock>
           </Columns>
           <FixedButton
-            type='submit'
+            type='button'
             primary
             bottom='3rem'
             right='3rem'
