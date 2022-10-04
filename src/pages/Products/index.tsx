@@ -56,7 +56,7 @@ const Products: React.FC = () => {
 
   return (
     <>
-      <Header title='All Products' image={ShopHeader} />
+      <Header title='Products' image={ShopHeader} />
       <Body>
         <Container>
           <Categories>

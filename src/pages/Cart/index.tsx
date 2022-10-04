@@ -44,7 +44,7 @@ const CartPage: React.FC = () => {
 
   return (
     <>
-      <Header title='Cart' image={CartHeader} />
+      <Header title='My cart' image={CartHeader} />
       <Body>
         <Container>
           <Table
