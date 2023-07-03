@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Runs the app in the development mode.\
-The app is hosted at [https://aleksey-lihodievski.github.io/fake-store](https://aleksey-lihodievski.github.io/fake-store)
+The app is hosted at [https://teachmeskills-fake-store.netlify.app](https://teachmeskills-fake-store.netlify.app)
 
 ### Commands
 
